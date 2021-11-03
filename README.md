@@ -1,5 +1,5 @@
 ## 리액트로 만드는 고객 관리 시스템✔
-### Skill stacks
+### Skill stacks😁
 1. React
 > class component
 
