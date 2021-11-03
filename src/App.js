@@ -7,8 +7,20 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import Table from '@material-ui/core/Table';
 import TableRow from '@material-ui/core/TableRow';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 
 
+const styles = theme => ({
+  root: {
+    width:'100%',
+    marginTop:theme.spacing.unit * 3,
+    overflowX:"auto",
+  },
+  table: {
+    minWidth:1080
+  }
+})
 
 const customers = [{
   'id' : 1,
@@ -38,9 +50,10 @@ const customers = [{
 
 class App extends Component {
   render() {
+    const { classes } = this.props;
     return (
-      <div>
-        <Table>
+      <Paper className = {classes.root}>
+        <Table className = {classes.table}>
           <TableHead>
             <TableRow>
               <TableCell>번호</TableCell>
@@ -59,10 +72,10 @@ class App extends Component {
           })}
           </TableBody>
         </Table>
-      </div>
+      </Paper>
     );
   }
   
 }
 
-export default App;
+export default withStyles(styles)(App);
