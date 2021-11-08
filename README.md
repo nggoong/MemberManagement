@@ -8,4 +8,9 @@
 
 3. nodemon
 
+4. mariaDB
+> `npm install --save mariadb`
+
+5. axios
+> `npm install --save axios`
 
