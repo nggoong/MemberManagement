@@ -51,7 +51,7 @@ class CustomerAdd extends Component {
             }
         }
         
-        return axios.post(url, FormData, config);
+        return axios.post(url, formData, config);
      }
 
 
