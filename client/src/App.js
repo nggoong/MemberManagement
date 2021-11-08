@@ -21,7 +21,7 @@ const styles = theme => ({
     minWidth:1080
   },
   progress: {
-    margin:theme.spacing.unit*2
+    margin:theme.spacing.unit * 2
   }
 })
 
