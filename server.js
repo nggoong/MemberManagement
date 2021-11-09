@@ -25,6 +25,10 @@ connection.connect((err) => {
 	console.log('Database Connected');
 });
 
+/* 이미지 파일 처리를 위한 library >>> multer */
+const multer = require('multer');
+// 업로드 폴더 설정(사용자의 파일이 저장되는 폴더)
+const upload = multer({dest: './upload'});
 app.get('/api/customers', (req, res)=> {
     connection.query(
       'select * from customer',
@@ -33,5 +37,21 @@ app.get('/api/customers', (req, res)=> {
       }
     )
 });
+// upload폴더 공유(사용자는 image폴더로 확인할 수 있음.. image와 upload 바인딩)
+app.use('/image', express.static('./upload'))
+app.post('/api/customers', upload.single('image'), (req, res) => {
+  let sql = 'insert into customer values (null, ?, ?, ?, ?, ?)';
+  let image = '/image/' + req.file.filename;
+  let name = req.body.name;
+  let birthday = req.body.birthday;
+  let gender = req.body.gender;
+  let job = req.body.job;
+  let params = [image, name, birthday, gender, job];
+
+  connection.query(sql, params,
+    (err, rows, fields) => {
+      res.send(rows);
+    })
+})
 
 app.listen(port, () => console.log(`on port ${port}`));

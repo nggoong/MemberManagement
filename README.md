@@ -14,3 +14,7 @@
 5. axios
 > `npm install --save axios`
 
+6. multer
+> `npm install --save multer`
+> 이미지 파일 업로드 시 처리를 위한 라이브러리
+> 사용방법은 server.js의 코드와 주석 참고
